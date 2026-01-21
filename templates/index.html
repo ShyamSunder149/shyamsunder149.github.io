@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{.Name}} - {{.Title}} Portfolio">
+    <title>{{.Name}} | {{.Title}}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header class="nav-container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="logo-bracket">{</span>{{.Name}}<span class="logo-bracket">}</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content fade-in-up">
+                <span class="greeting">Hello, I'm</span>
+                <h1 class="gradient-text">{{.Name}}</h1>
+                <h2 class="subtitle">{{.Title}}</h2>
+                <p class="hero-description">{{.About}}</p>
+                <div class="cta-group">
+                    <a href="#projects" class="btn primary">View Work</a>
+                    <a href="mailto:you@email.com" class="btn secondary">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content fade-on-scroll">
+                <p>{{.About}}</p>
+                <p>I am passionate about building scalable software and creating great user experiences. With a strong
+                    foundation in backend development and a keen eye for detail, I strive to deliver high-quality
+                    solutions.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2>Tech Stack</h2>
+            </div>
+            <div class="skills-grid fade-on-scroll">
+                {{range .Skills}}
+                <div class="skill-tag">{{.}}</div>
+                {{end}}
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+                {{range .Experience}}
+                <div class="timeline-item fade-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content card">
+                        <div class="timeline-header">
+                            <h3>{{.Role}}</h3>
+                            <span class="timeline-date">{{.Duration}}</span>
+                        </div>
+                        <h4 class="company-name">{{.Company}}</h4>
+                        <p>{{.Description}}</p>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                {{range .Projects}}
+                <article class="project-card card fade-on-scroll">
+                    <div class="card-content">
+                        <h3>{{.Name}}</h3>
+                        <p>{{.Description}}</p>
+                        <a href="{{.Link}}" target="_blank" class="project-link">
+                            View Project
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                {{end}}
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:you@email.com">Email</a>
+                <a href="/resume.pdf">Resume</a>
+            </div>
+            <p class="copyright">© {{.Name}}. Built with Go.</p>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

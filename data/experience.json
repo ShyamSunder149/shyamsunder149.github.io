@@ -1,0 +1,14 @@
+[
+  {
+    "role": "Software Engineer",
+    "company": "Tech Corp",
+    "duration": "2023 – Present",
+    "description": "Building scalable backend services in Go."
+  },
+  {
+    "role": "Junior Developer",
+    "company": "Startup Inc",
+    "duration": "2021 – 2023",
+    "description": "Worked on APIs and internal tooling."
+  }
+]
