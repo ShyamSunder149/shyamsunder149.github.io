@@ -1,0 +1,38 @@
+[
+    {
+        "id": "getting-started-with-go",
+        "title": "Getting Started with Go",
+        "date": "2024-12-15",
+        "excerpt": "Learn the basics of Go programming language and why it's great for backend development.",
+        "tags": [
+            "go",
+            "backend",
+            "programming"
+        ],
+        "file": "getting-started-with-go.md"
+    },
+    {
+        "id": "kubernetes-basics",
+        "title": "Kubernetes Basics for Developers",
+        "date": "2024-11-20",
+        "excerpt": "An introduction to Kubernetes concepts every developer should know.",
+        "tags": [
+            "kubernetes",
+            "devops",
+            "cloud"
+        ],
+        "file": "kubernetes-basics.md"
+    },
+    {
+        "id": "building-rest-apis",
+        "title": "Building RESTful APIs in Go",
+        "date": "2024-10-05",
+        "excerpt": "Best practices for building production-ready REST APIs with Go.",
+        "tags": [
+            "go",
+            "api",
+            "backend"
+        ],
+        "file": "building-rest-apis.md"
+    }
+]

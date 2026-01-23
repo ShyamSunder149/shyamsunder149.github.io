@@ -1,14 +1,26 @@
 [
   {
-    "role": "Software Engineer",
-    "company": "Tech Corp",
-    "duration": "2023 – Present",
-    "description": "Building scalable backend services in Go."
+    "role": "Software Engineer II",
+    "company": "Avalara",
+    "duration": "Dec 2024 - Present",
+    "description": "Building and maintaining cloud-based tax compliance solutions."
   },
   {
-    "role": "Junior Developer",
-    "company": "Startup Inc",
-    "duration": "2021 – 2023",
-    "description": "Worked on APIs and internal tooling."
+    "role": "Software Engineer I",
+    "company": "Avalara",
+    "duration": "Jul 2023 - Dec 2024",
+    "description": "Contributed to backend services and API development."
+  },
+  {
+    "role": "Software Engineering Intern",
+    "company": "Avalara",
+    "duration": "Jan 2023 - Jul 2023",
+    "description": "Assisted in developing and testing software components for tax automation."
+  },
+  {
+    "role": "Summer Intern",
+    "company": "KLA",
+    "duration": "May 2022 - Jul 2022",
+    "description": "Worked on software projects related to process control and yield management."
   }
 ]

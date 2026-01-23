@@ -231,28 +231,137 @@ a {
     border-radius: 2px;
 }
 
+/* About Section - Two Column Layout */
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.about-text strong {
+    color: var(--primary);
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.highlight-item:hover {
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.highlight-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.highlight-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-item strong {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.highlight-item span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .about-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Skills Grid */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
 }
 
-.skill-tag {
+/* Tag Styles */
+.skill-tag,
+.blog-tag {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 100px;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     transition: var(--transition);
     cursor: default;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.skill-tag:hover {
+.skill-tag i {
+    font-size: 1.1em;
+}
+
+.skill-tag:hover,
+.blog-tag:hover {
     border-color: var(--primary);
+    color: var(--text-primary);
     background: rgba(99, 102, 241, 0.1);
     transform: translateY(-2px);
+}
+
+/* Tags Filter Bar */
+.tags-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    justify-content: flex-start;
+    /* Align filtered tags to start? User said "just below header". Center or start? Start usually looks better for lists. */
+}
+
+.tags-filter-bar .blog-tag {
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.tags-filter-bar .blog-tag.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 /* Timeline/Experience */
@@ -438,4 +547,93 @@ a {
     .timeline-marker {
         left: -2.1rem;
     }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    color: var(--text-secondary);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--primary);
+}
+
+/* Markdown Styles */
+.markdown-body {
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.markdown-body p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.markdown-body ul,
+.markdown-body ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    color: var(--text-secondary);
+}
+
+.markdown-body pre {
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-body code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.markdown-body pre code {
+    background: transparent;
+    padding: 0;
 }

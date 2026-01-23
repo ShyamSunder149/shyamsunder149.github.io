@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shyam Sunder - Software Engineer Portfolio">
+    <title>Shyam Sunder | Software Engineer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header class="nav-container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="logo-bracket">{</span>Shyam Sunder<span class="logo-bracket">}</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#blogs" class="nav-link">Blogs</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ... existing sections ... -->
+
+        <!-- I will rely on the tool to match the context and not replace everything unless I select the whole file. 
+             But I need to insert the blog section *after* projects.
+             Since I can't use multiple ranges easily to insert in different places without potentially messing up,
+             I will do this in multiple steps or be very careful.
+             Actually, strict replace requires exact content.
+             I'll look at the file content again to find the right chunk for Nav and then appending the section.
+        -->
+        <!-- Wait, I will use multiple replace chunks if possible or just one for nav and one for the section.
+             The Prompt says "Call tools as you normally would." 
+             replace_file_content does NOT support multiple chunks. multi_replace_file_content DOES.
+        -->
+
+        <main>
+            <section class="hero-section">
+                <div class="hero-content fade-in-up">
+                    <span class="greeting">Hello, I'm</span>
+                    <h1 class="gradient-text">Shyam Sunder</h1>
+                    <h2 class="subtitle">Software Engineer</h2>
+                    <p class="hero-description">Architecting reliable systems, high-performance APIs, and cloud-native
+                        solutions with Go.</p>
+                    <div class="cta-group">
+                        <a href="#projects" class="btn primary">View Work</a>
+                        <a href="mailto:you@email.com" class="btn secondary">Contact Me</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="section">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                </div>
+                <div class="about-wrapper fade-on-scroll">
+                    <div class="about-text">
+                        <p>I'm a Software Engineer at <strong>Avalara</strong>, building cloud-native tax compliance
+                            solutions at scale.</p>
+                        <p>I specialize in designing high-performance backend systems, APIs, and distributed
+                            architectures
+                            using <strong>Go</strong>, <strong>Kubernetes</strong>, and <strong>AWS</strong>.</p>
+                        <p>When I'm not shipping code, I'm exploring new tech, contributing to open-source, or
+                            optimizing my
+                            dev workflow.</p>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">⚡</span>
+                            <div>
+                                <strong>Performance</strong>
+                                <span>Low-latency, high-throughput systems</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🏗️</span>
+                            <div>
+                                <strong>Architecture</strong>
+                                <span>Microservices & Cloud-native design</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🛡️</span>
+                            <div>
+                                <strong>Reliability</strong>
+                                <span>Fault-tolerant, resilient systems</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🔧</span>
+                            <div>
+                                <strong>Automation</strong>
+                                <span>CI/CD, DevOps, Infrastructure as Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <div class="section-header">
+                    <h2>Tech Stack</h2>
+                </div>
+                <div class="skills-grid fade-on-scroll">
+                    <div class="skill-tag"><i class="devicon-go-original-wordmark colored"></i> Go</div>
+                    <div class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</div>
+                    <div class="skill-tag"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</div>
+                    <div class="skill-tag"><i class="devicon-react-original colored"></i> React</div>
+                    <div class="skill-tag"><i class="devicon-typescript-plain colored"></i> TypeScript</div>
+                    <div class="skill-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</div>
+                    <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</div>
+                    <div class="skill-tag"><i class="devicon-grpc-plain colored"></i> gRPC</div>
+                    <div class="skill-tag"><i class="devicon-terraform-plain colored"></i> Terraform</div>
+                    <div class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</div>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <div class="section-header">
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item fade-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="timeline-header">
+                                <h3>Software Engineer II</h3>
+                                <span class="timeline-date">Dec 2024 - Present</span>
+                            </div>
+                            <h4 class="company-name">Avalara</h4>
+                            <ul>
+                                <li>Building and maintaining cloud-based tax compliance solutions.</li>
+                                <li>Optimizing high-scale distributed systems for performance and reliability.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="timeline-header">
+                                <h3>Software Engineer I</h3>
+                                <span class="timeline-date">Jul 2023 - Dec 2024</span>
+                            </div>
+                            <h4 class="company-name">Avalara</h4>
+                            <ul>
+                                <li>Contributed to backend services and API development in Go.</li>
+                                <li>Collaborated with cross-functional teams to deliver key feature updates.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                </div>
+                <div class="projects-grid" id="projects-container">
+                    <!-- Projects loaded dynamically via JS -->
+                    <div class="loading-state"
+                        style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">
+                        Loading projects...
+                    </div>
+                </div>
+            </section>
+
+            <section id="blogs" class="section">
+                <div class="section-header">
+                    <h2>Latest Thoughts</h2>
+                </div>
+
+                <!-- Global Tag Filter List -->
+                <div id="all-tags-filter" class="tags-filter-bar fade-on-scroll">
+                    <!-- Tags loaded dynamically -->
+                </div>
+
+                <!-- Single Active Filter Indicator (Previous implementation, can keep or remove, keeping for specific user feedback loop if needed but better to integrate active state in the list above. I will remove the old 'filtering by' text to be cleaner as requested 'display list of tags') -->
+                <!-- Actually, keeping the 'active filter' UI might be redundant if the list itself shows active state. Let's hide the old text-based filter UI and rely on the list. -->
+                <div class="filter-container" id="blog-filters" style="display: none; margin-bottom: 2rem;">
+                    <span style="color: var(--text-secondary); margin-right: 1rem;">Filtering by:</span>
+                    <span id="active-tag" class="skill-tag"
+                        style="display: inline-flex; color: var(--primary); border-color: var(--primary);">
+                        tagName
+                        <span onclick="clearBlogFilter()" style="margin-left:8px; cursor:pointer;"
+                            title="Remove filter">×</span>
+                    </span>
+                </div>
+
+                <div class="projects-grid" id="blogs-container">
+                    <span onclick="clearBlogFilter()" style="margin-left:8px; cursor:pointer;"
+                        title="Remove filter">×</span>
+                    </span>
+                </div>
+                <div class="projects-grid" id="blogs-container">
+                    <!-- Blogs loaded via JS -->
+                    <div class="loading-state"
+                        style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">
+                        Loading articles...
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Blog Modal -->
+        <div id="blog-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <div id="blog-content-body" class="markdown-body">
+                    <!-- Markdown content rendered here -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/ShyamSunder149" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="mailto:you@email.com">Email</a>
+                    <a href="/resume.pdf">Resume</a>
+                </div>
+                <p class="copyright">© Shyam Sunder. Built with Web Technologies.</p>
+            </div>
+        </footer>
+
+        <script src="static/script.js"></script>
+</body>
+
+</html>
