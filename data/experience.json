@@ -1,26 +1,20 @@
 [
   {
-    "role": "Software Engineer II",
-    "company": "Avalara",
-    "duration": "Dec 2024 - Present",
-    "description": "Building and maintaining cloud-based tax compliance solutions."
+    "role": "Software Engineer",
+    "company": "Factors.ai",
+    "duration": "Mar 2025 - Present",
+    "description": "Building and maintaining cloud-based tax compliance solutions.#Optimizing high-scale distributed systems for performance and reliability."
   },
   {
-    "role": "Software Engineer I",
-    "company": "Avalara",
-    "duration": "Jul 2023 - Dec 2024",
-    "description": "Contributed to backend services and API development."
+    "role": "Member of Technical Staff",
+    "company": "Zoho",
+    "duration": "Jun 2023 - Mar 2025",
+    "description": "Contributed to backend services and API development.#Collaborated with cross-functional teams to deliver key feature updates."
   },
   {
     "role": "Software Engineering Intern",
-    "company": "Avalara",
-    "duration": "Jan 2023 - Jul 2023",
-    "description": "Assisted in developing and testing software components for tax automation."
-  },
-  {
-    "role": "Summer Intern",
-    "company": "KLA",
-    "duration": "May 2022 - Jul 2022",
-    "description": "Worked on software projects related to process control and yield management."
+    "company": "Zoho",
+    "duration": "Jan 2023 - May 2023",
+    "description": "Assisted in developing and testing software components for tax automation.#Learned best practices for scalable software engineering."
   }
 ]

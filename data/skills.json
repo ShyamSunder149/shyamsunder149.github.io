@@ -2,11 +2,9 @@
   "Go",
   "Docker",
   "Kubernetes",
-  "React",
-  "TypeScript",
-  "PostgreSQL",
-  "AWS",
-  "gRPC",
-  "Terraform",
-  "Linux"
+  "Python",
+  "MySQL",
+  "Linux",
+  "Redis",
+  "GCP"
 ]

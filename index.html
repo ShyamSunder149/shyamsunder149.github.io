@@ -73,11 +73,11 @@
                 </div>
                 <div class="about-wrapper fade-on-scroll">
                     <div class="about-text">
-                        <p>I'm a Software Engineer at <strong>Avalara</strong>, building cloud-native tax compliance
+                        <p>I'm a Software Engineer at <strong>factors.ai</strong>, building cloud-native tax compliance
                             solutions at scale.</p>
                         <p>I specialize in designing high-performance backend systems, APIs, and distributed
                             architectures
-                            using <strong>Go</strong>, <strong>Kubernetes</strong>, and <strong>AWS</strong>.</p>
+                            using <strong>Go</strong>, <strong>Kubernetes</strong>, and <strong>Redis</strong>.</p>
                         <p>When I'm not shipping code, I'm exploring new tech, contributing to open-source, or
                             optimizing my
                             dev workflow.</p>
@@ -119,17 +119,8 @@
                 <div class="section-header">
                     <h2>Tech Stack</h2>
                 </div>
-                <div class="skills-grid fade-on-scroll">
-                    <div class="skill-tag"><i class="devicon-go-original-wordmark colored"></i> Go</div>
-                    <div class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</div>
-                    <div class="skill-tag"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</div>
-                    <div class="skill-tag"><i class="devicon-react-original colored"></i> React</div>
-                    <div class="skill-tag"><i class="devicon-typescript-plain colored"></i> TypeScript</div>
-                    <div class="skill-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</div>
-                    <div class="skill-tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</div>
-                    <div class="skill-tag"><i class="devicon-grpc-plain colored"></i> gRPC</div>
-                    <div class="skill-tag"><i class="devicon-terraform-plain colored"></i> Terraform</div>
-                    <div class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</div>
+                <div class="skills-grid fade-on-scroll" id="skills-container">
+                    <!-- Skills loaded via JS -->
                 </div>
             </section>
 
@@ -137,34 +128,10 @@
                 <div class="section-header">
                     <h2>Experience</h2>
                 </div>
-                <div class="timeline">
-                    <div class="timeline-item fade-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content card">
-                            <div class="timeline-header">
-                                <h3>Software Engineer II</h3>
-                                <span class="timeline-date">Dec 2024 - Present</span>
-                            </div>
-                            <h4 class="company-name">Avalara</h4>
-                            <ul>
-                                <li>Building and maintaining cloud-based tax compliance solutions.</li>
-                                <li>Optimizing high-scale distributed systems for performance and reliability.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item fade-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content card">
-                            <div class="timeline-header">
-                                <h3>Software Engineer I</h3>
-                                <span class="timeline-date">Jul 2023 - Dec 2024</span>
-                            </div>
-                            <h4 class="company-name">Avalara</h4>
-                            <ul>
-                                <li>Contributed to backend services and API development in Go.</li>
-                                <li>Collaborated with cross-functional teams to deliver key feature updates.</li>
-                            </ul>
-                        </div>
+                <div class="timeline" id="experience-container">
+                    <!-- Experience loaded via JS -->
+                    <div class="loading-state" style="text-align: center; color: var(--text-secondary);">
+                        Loading experience...
                     </div>
                 </div>
             </section>
@@ -204,18 +171,7 @@
                     </span>
                 </div>
 
-                <div class="projects-grid" id="blogs-container">
-                    <span onclick="clearBlogFilter()" style="margin-left:8px; cursor:pointer;"
-                        title="Remove filter">×</span>
-                    </span>
-                </div>
-                <div class="projects-grid" id="blogs-container">
-                    <!-- Blogs loaded via JS -->
-                    <div class="loading-state"
-                        style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">
-                        Loading articles...
-                    </div>
-                </div>
+                <div class="projects-grid" id="blogs-container"></div>
             </section>
         </main>
 
@@ -237,7 +193,7 @@
                     <a href="mailto:you@email.com">Email</a>
                     <a href="/resume.pdf">Resume</a>
                 </div>
-                <p class="copyright">© Shyam Sunder. Built with Web Technologies.</p>
+                <p class="copyright">© Shyam Sunder. Built with Antigravity.</p>
             </div>
         </footer>
 

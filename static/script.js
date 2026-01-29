@@ -237,4 +237,118 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = "none";
         }
     }
+
+    // 5. Skills System
+    fetchSkills();
+
+    function fetchSkills() {
+        const container = document.getElementById('skills-container');
+        if (!container) return;
+
+        fetch('data/skills.json')
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to fetch skills config');
+                return res.json();
+            })
+            .then(skills => {
+                container.innerHTML = '';
+                if (!Array.isArray(skills) || skills.length === 0) {
+                    container.innerHTML = '<p class="text-secondary">No skills found.</p>';
+                    return;
+                }
+
+                skills.forEach(skill => {
+                    const tag = document.createElement('div');
+                    tag.className = 'skill-tag';
+                    const iconClass = getIconClass(skill);
+                    tag.innerHTML = `<i class="${iconClass}"></i> ${skill}`;
+                    container.appendChild(tag);
+                });
+
+                // Re-trigger observer for the new content if needed
+                observeElements();
+            })
+            .catch(err => {
+                console.error('Error loading skills:', err);
+                container.innerHTML = '<p class="text-secondary" style="grid-column: 1/-1; text-align: center;">Failed to load skills.</p>';
+            });
+    }
+
+    function getIconClass(skill) {
+        const map = {
+            'Go': 'devicon-go-original-wordmark colored',
+            'Docker': 'devicon-docker-plain colored',
+            'Kubernetes': 'devicon-kubernetes-plain colored',
+            'Python': 'devicon-python-plain colored',
+            'MySQL': 'devicon-mysql-plain colored',
+            'Linux': 'devicon-linux-plain colored',
+            'Redis': 'devicon-redis-plain colored',
+            'GCP': 'devicon-googlecloud-plain colored',
+            'AWS': 'devicon-amazonwebservices-plain-wordmark colored',
+            'React': 'devicon-react-original colored',
+            'TypeScript': 'devicon-typescript-plain colored',
+            'PostgreSQL': 'devicon-postgresql-plain colored',
+            'gRPC': 'devicon-grpc-plain colored',
+            'Terraform': 'devicon-terraform-plain colored'
+        };
+        // Fallback or default match
+        return map[skill] || `devicon-${skill.toLowerCase()}-plain colored`;
+    }
+
+    // 6. Experience System
+    fetchExperience();
+
+    function fetchExperience() {
+        const container = document.getElementById('experience-container');
+        if (!container) return;
+
+        fetch('data/experience.json')
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to fetch experience');
+                return res.json();
+            })
+            .then(experiences => {
+                container.innerHTML = '';
+                if (!Array.isArray(experiences) || experiences.length === 0) {
+                    container.innerHTML = '<p class="text-secondary" style="text-align: center;">No experience found.</p>';
+                    return;
+                }
+
+                experiences.forEach(exp => {
+                    const item = document.createElement('div');
+                    item.className = 'timeline-item fade-on-scroll';
+
+                    // Split description by delimiter '#'
+                    const points = exp.description.split('#').map(p => p.trim()).filter(p => p);
+
+                    // Build HTML for description: use <ul> if points exist
+                    let descriptionHtml = '';
+                    if (points.length > 0) {
+                        // If it's a single point without #, it will still be in the array. 
+                        // The user asked to "separate... with #... displayed as separate points".
+                        // So we always render as list items for consistency if any description exists.
+                        descriptionHtml = `<ul>${points.map(point => `<li>${point}</li>`).join('')}</ul>`;
+                    }
+
+                    item.innerHTML = `
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="timeline-header">
+                                <h3>${exp.role}</h3>
+                                <span class="timeline-date">${exp.duration}</span>
+                            </div>
+                            <h4 class="company-name">${exp.company}</h4>
+                            ${descriptionHtml}
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+
+                observeElements();
+            })
+            .catch(err => {
+                console.error('Error loading experience:', err);
+                container.innerHTML = '<p class="text-secondary" style="text-align: center;">Failed to load experience.</p>';
+            });
+    }
 });

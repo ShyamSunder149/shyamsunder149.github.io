@@ -15,13 +15,6 @@ A static software engineer portfolio.
 
 ## Deployment
 
-### Vercel
-
-1. Push to GitHub.
-2. Import project in Vercel.
-3. Vercel will auto-detect it as a static site.
-4. Deploy!
-
 ### GitHub Pages
 
 1. Go to Settings > Pages.
