@@ -1,16 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, observerInstance) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                observerInstance.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     observeElements();
 
-    // 2. Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -34,16 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. GitHub Projects
-    fetchProjects("ShyamSunder149");
+    fetchProjects('ShyamSunder149');
+    fetchSkills();
+    fetchExperience();
 
     function fetchProjects(username) {
         const container = document.getElementById('projects-container');
         if (!container) return;
 
-        const url = `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`;
-
-        fetch(url)
+        fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`)
             .then(response => {
                 if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
                 return response.json();
@@ -81,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>${name}</h3>
                 <p>${description}</p>
                 <a href="${repo.html_url}" target="_blank" class="project-link">
-                    View Project 
+                    View Project
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                 </a>
             </div>
@@ -90,156 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatRepoName(name) {
-        return name.split('-').map(word => {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        }).join(' ');
+        return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
-
-    // 4. Blog System
-    fetchBlogs();
-
-    window.allBlogs = [];
-    window.activeTag = null;
-    window.allTags = new Set();
-
-    function fetchBlogs() {
-        fetch('data/blogs.json')
-            .then(res => res.json())
-            .then(blogs => {
-                window.allBlogs = blogs;
-
-                // Collect all unique tags
-                window.allTags = new Set();
-                blogs.forEach(blog => {
-                    if (blog.tags && Array.isArray(blog.tags)) {
-                        blog.tags.forEach(tag => window.allTags.add(tag));
-                    }
-                });
-
-                renderTagFilter();
-                renderBlogs(blogs);
-            })
-            .catch(err => {
-                console.error('Error loading blogs:', err);
-                const container = document.getElementById('blogs-container');
-                if (container) {
-                    container.innerHTML = '<p class="text-secondary" style="grid-column: 1/-1; text-align: center;">Failed to load articles.</p>';
-                }
-            });
-    }
-
-    window.renderTagFilter = function () {
-        const filterContainer = document.getElementById('all-tags-filter');
-        if (!filterContainer) return;
-
-        filterContainer.innerHTML = '';
-
-        // 'All' tag
-        const allBtn = document.createElement('span');
-        allBtn.className = `blog-tag ${window.activeTag === null ? 'active' : ''}`;
-        allBtn.textContent = 'All';
-        allBtn.onclick = () => clearBlogFilter();
-        filterContainer.appendChild(allBtn);
-
-        // Individual tags
-        Array.from(window.allTags).sort().forEach(tag => {
-            const tagBtn = document.createElement('span');
-            tagBtn.className = `blog-tag ${window.activeTag === tag ? 'active' : ''}`;
-            // Capitalize and no hash
-            tagBtn.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
-            tagBtn.onclick = () => filterBlogs(tag);
-            filterContainer.appendChild(tagBtn);
-        });
-    };
-
-    window.renderBlogs = function (blogs) {
-        const container = document.getElementById('blogs-container');
-        if (!container) return;
-
-        container.innerHTML = '';
-
-        if (blogs.length === 0) {
-            container.innerHTML = '<p class="text-secondary" style="grid-column: 1/-1; text-align: center;">No articles found.</p>';
-            return;
-        }
-
-        blogs.forEach(blog => {
-            const card = document.createElement('article');
-            card.className = 'card fade-on-scroll';
-            card.style.cursor = 'pointer';
-
-            // Build tags HTML - Capitalize and no hash
-            const tagsHtml = blog.tags.map(tag =>
-                `<span class="blog-tag" style="border: none; background: rgba(255,255,255,0.05); font-size: 0.75rem; padding: 0.2rem 0.6rem; pointer-events: auto;" onclick="event.stopPropagation(); filterBlogs('${tag}')">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`
-            ).join('');
-
-            card.innerHTML = `
-                <div class="card-content" onclick="openBlog('${blog.file}')">
-                    <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--primary); margin-bottom: 0.5rem; display: block;">${blog.date}</span>
-                    <h3>${blog.title}</h3>
-                    <p>${blog.excerpt}</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
-                        ${tagsHtml}
-                    </div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-        observeElements();
-    };
-
-    window.filterBlogs = function (tag) {
-        window.activeTag = tag;
-        const filtered = window.allBlogs.filter(b => b.tags.includes(tag));
-
-        renderTagFilter(); // Re-render to update active state
-        renderBlogs(filtered);
-    };
-
-    window.clearBlogFilter = function () {
-        window.activeTag = null;
-        renderTagFilter(); // Re-render to update active state
-        renderBlogs(window.allBlogs);
-    };
-
-    window.openBlog = function (filename) {
-        const modal = document.getElementById('blog-modal');
-        const contentBody = document.getElementById('blog-content-body');
-
-        if (!modal || !contentBody) return;
-
-        // Show loading or spinner?
-        contentBody.innerHTML = '<p style="text-align:center;">Loading...</p>';
-        modal.style.display = 'block';
-
-        fetch(`blogs/${filename}`)
-            .then(res => {
-                if (!res.ok) throw new Error("Not found");
-                return res.text();
-            })
-            .then(markdown => {
-                contentBody.innerHTML = marked.parse(markdown);
-            })
-            .catch(err => {
-                contentBody.innerHTML = '<p>Error loading article.</p>';
-            });
-    };
-
-    window.closeModal = function () {
-        const modal = document.getElementById('blog-modal');
-        if (modal) modal.style.display = 'none';
-    };
-
-    // Close modal when clicking outside
-    window.onclick = function (event) {
-        const modal = document.getElementById('blog-modal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // 5. Skills System
-    fetchSkills();
 
     function fetchSkills() {
         const container = document.getElementById('skills-container');
@@ -264,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     tag.innerHTML = `<i class="${iconClass}"></i> ${skill}`;
                     container.appendChild(tag);
                 });
-
-                // Re-trigger observer for the new content if needed
                 observeElements();
             })
             .catch(err => {
@@ -291,12 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'gRPC': 'devicon-grpc-plain colored',
             'Terraform': 'devicon-terraform-plain colored'
         };
-        // Fallback or default match
         return map[skill] || `devicon-${skill.toLowerCase()}-plain colored`;
     }
-
-    // 6. Experience System
-    fetchExperience();
 
     function fetchExperience() {
         const container = document.getElementById('experience-container');
@@ -318,15 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const item = document.createElement('div');
                     item.className = 'timeline-item fade-on-scroll';
 
-                    // Split description by delimiter '#'
-                    const points = exp.description.split('#').map(p => p.trim()).filter(p => p);
-
-                    // Build HTML for description: use <ul> if points exist
+                    const points = exp.description.split('#').map(p => p.trim()).filter(Boolean);
                     let descriptionHtml = '';
                     if (points.length > 0) {
-                        // If it's a single point without #, it will still be in the array. 
-                        // The user asked to "separate... with #... displayed as separate points".
-                        // So we always render as list items for consistency if any description exists.
                         descriptionHtml = `<ul>${points.map(point => `<li>${point}</li>`).join('')}</ul>`;
                     }
 

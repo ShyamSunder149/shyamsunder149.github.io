@@ -3,18 +3,18 @@
     "role": "Software Engineer",
     "company": "Factors.ai",
     "duration": "Mar 2025 - Present",
-    "description": "Building and maintaining cloud-based tax compliance solutions.#Optimizing high-scale distributed systems for performance and reliability."
+    "description": "Enhanced workflow systems by exposing detailed execution logs via APIs so end users can troubleshoot with transparency.#Upgraded cron monitoring with runtime logging, Slack alerts for long-running jobs, and thorough statistics across workloads.#Built hourly cron analyzers that surface entity creation/update trends, flagged slow queries, and informed query + business logic tuning.#Reduced GCP logging costs by overriding noisy third-party loggers and eliminating excess statements."
   },
   {
     "role": "Member of Technical Staff",
     "company": "Zoho",
     "duration": "Jun 2023 - Mar 2025",
-    "description": "Contributed to backend services and API development.#Collaborated with cross-functional teams to deliver key feature updates."
+    "description": "Proud member of the Data ETL Clan (Zoho Desk): building a dynamic Query Builder that spins up joins on demand (with graphs for extra flair), engineered solid pre/post checks and failure handling for smooth DC migrations (yes, even the inline images behaved), tightened deployment reliability with better logs and validations, added backup limits + email nudges to keep storage civilized, and extended backup support to custom modules with some polished UI upgrades to top it off."
   },
   {
     "role": "Software Engineering Intern",
     "company": "Zoho",
     "duration": "Jan 2023 - May 2023",
-    "description": "Assisted in developing and testing software components for tax automation.#Learned best practices for scalable software engineering."
+    "description": "Built a standalone Date-Time utility that plays nicely with any app, handles time zones like a diplomat, and doesn’t get confused by daylight savings drama. Also engineered a secure Zip Extractor that smartly skips blacklisted file types and fearlessly unpacks nested zips—because one zip inside another isn’t scary, it’s just Tuesday."
   }
 ]
